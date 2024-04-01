@@ -68,8 +68,8 @@ for _ in range(m):
             xi, xj = max_i + mul * ni, max_j + mul * nj
             if arr[xi][xj] <= 0:
                 if c <= arr[xi][xj]:
-                    arr[ni][nj] = c
+                    arr[xi][xj] = c
                 break
             else:
-                arr[ni][nj] = c
+                arr[xi][xj] = c
 print(ans)
