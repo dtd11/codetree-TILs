@@ -19,14 +19,13 @@ for _ in range(m):
                 arr[i][j] += 1
 
     #[1] 나무의 성장
-    narr = [x[:] for x in arr]
     for i in range(1, n + 1):
         for j in range(1, n + 1):
             if arr[i][j] > 0:  # 나무가 있다면, 인접 나무수만큼 성장
                 for ni, nj in ((i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)):
                     if arr[ni][nj] > 0:
-                        narr[i][j] += 1
-    arr = narr
+                        arr[i][j] += 1
+
 
     #[2] 나무의 번식
     narr = [x[:] for x in arr]
