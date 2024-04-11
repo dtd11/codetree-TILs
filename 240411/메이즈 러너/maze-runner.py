@@ -54,11 +54,11 @@ for _ in range(k):
     if cnt == 0:
         break
 
-    si, sj, L = find_square(arr)
+    i, j, L = find_square(arr)
     narr = [x[:] for x in arr]
-    for i in range(L):
-        for j in range(L):
-            narr[si+i][sj+j] = arr[si+L-1-j][sj+i]
+    for si in range(L):
+        for sj in range(L):
+            narr[si+i][sj+j] = arr[i+L-1-sj][j+si]
             if narr[si+i][sj+j] > 0:
                 narr[si + i][sj + j] -= 1
     arr = narr
