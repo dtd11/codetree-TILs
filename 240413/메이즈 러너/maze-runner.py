@@ -6,14 +6,14 @@ for _ in range(M):
     arr[i][j]-=1            # 사람은 -1 (같은 위치에 여러명 있을 수 있음)
 
 ei,ej=map(lambda x:int(x)-1, input().split())
-arr[ei][ej]=-11             # 비상구 -11
+arr[ei][ej]=-111             # 비상구 -11
 
 def find_square(arr):
     # [1] 비상구와 모든 사람간의 가장짧은 가로 또는 세로거리 구하기 => L
     mn = N
     for i in range(N):
         for j in range(N):
-            if -11<arr[i][j]<0:     # 사람인 경우
+            if -111<arr[i][j]<0:     # 사람인 경우
                 mn=min(mn, max(abs(ei-i), abs(ej-j)))
 
     # [2] (0,0)부터 순회하면서 길이 L인 정사각형에 비상구와 사람있는지 체크 => 리턴 L+1
@@ -22,13 +22,13 @@ def find_square(arr):
             if si<=ei<=si+mn and sj<=ej<=sj+mn: # 비상구가 포함된 사각형!
                 for i in range(si, si+mn+1):
                     for j in range(sj, sj+mn+1):
-                        if -11<arr[i][j]<0:     # 사람인 경우 리턴!
+                        if -111<arr[i][j]<0:     # 사람인 경우 리턴!
                             return si,sj,mn+1
 
 def find_exit(arr):
     for i in range(N):
         for j in range(N):
-            if arr[i][j]==-11:
+            if arr[i][j]==-111:
                 return i,j
 
 # K턴 또는 모두탈출까지 모든 사람의 이동거리 누적, 모두 탈출했으면 종료
@@ -40,7 +40,7 @@ for _ in range(K):
     narr = [x[:] for x in arr]
     for i in range(N):
         for j in range(N):
-            if -11<arr[i][j]<0: # 사람인 경우
+            if -111<arr[i][j]<0: # 사람인 경우
                 dist = abs(ei-i)+abs(ej-j)
                 # 네방향(상하우선), 범위내, 벽아니고 <=0, 거리가 dist보다 작으면
                 for di,dj in ((-1,0),(1,0),(0,-1),(0,1)):
@@ -48,7 +48,7 @@ for _ in range(K):
                     if 0<=ni<N and 0<=nj<N and arr[ni][nj]<=0 and dist>(abs(ei-ni)+abs(ej-nj)):
                         ans+=arr[i][j]          # 현재 인원수가 이동하는 것이니 이동거리에 누적
                         narr[i][j]-=arr[i][j]   # 이동처리
-                        if arr[ni][nj]==-11:    # 비상구인 경우
+                        if arr[ni][nj]==-111:    # 비상구인 경우
                             cnt+=arr[i][j]      # 탈출!
                         else:                   # 일반빈칸 또는 사람있는자리
                             narr[ni][nj]+=arr[i][j] # 들어온 인원 추가
