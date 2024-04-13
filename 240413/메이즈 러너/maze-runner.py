@@ -52,13 +52,13 @@ for _ in range(k):
     if cnt == 0:
         break
 
-    xi,xj,mn = find_square(arr)
+    si,sj,L = find_square(arr)
     narr = [x[:] for x in arr]
-    for i in range(mn):
-        for j in range(mn):
-            narr[xi+i][xj+j] = arr[xi+mn-1-j][xj+i]
-            if narr[xi+i][xj+j] > 0:
-                narr[xi+i][xj+j] -= 1
+    for i in range(L):
+        for j in range(L):
+            narr[si+i][sj+j] = arr[si+L-1-j][sj+i]
+            if narr[si+i][sj+j] > 0:
+                narr[si+i][sj+j] -= 1
     arr = narr
 
     ei, ej = find_exit(arr)
