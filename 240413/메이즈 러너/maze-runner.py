@@ -52,7 +52,7 @@ for _ in range(k):
     if cnt == 0:
         break
 
-    xi, xj, mn = find_square(arr)
+    xi,xj,mn = find_square(arr)
     narr = [x[:] for x in arr]
     for i in range(mn):
         for j in range(mn):
