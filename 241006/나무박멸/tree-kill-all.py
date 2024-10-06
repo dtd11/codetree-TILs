@@ -61,7 +61,7 @@ for _ in range(m):
     for di,dj in ((-1,-1), (-1,1), (1,-1), (1,1)):
         for mul in range(1, k+1):
             ni, nj = max_i + mul * di, max_j + mul * dj
-            if 0 <= ni < n and 0 <= nj < n and arr[ni][nj] > 0:
+            if 0 <= ni < n and 0 <= nj < n and (arr[ni][nj] > 0 or arr[ni][nj] >= -(c+1)):
                 arr[ni][nj] = -(c+1)
             else:
                 break
