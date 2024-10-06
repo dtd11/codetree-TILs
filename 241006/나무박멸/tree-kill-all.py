@@ -26,6 +26,7 @@ for _ in range(m):
                         arr[i][j] += 1
 
     # 번식
+    narr = [x[:] for x in arr]
     for i in range(n):
         for j in range(n):
             if arr[i][j] > 0:
@@ -36,8 +37,9 @@ for _ in range(m):
                         cnt += 1
                         xy.append((ni, nj))
                 if cnt > 0:
-                    for (x,y) in xy:
-                        arr[x][y] += arr[i][j] // cnt
+                    for (x, y) in xy:
+                        narr[x][y] += arr[i][j] // cnt
+    arr = narr
 
     max, max_i, max_j = 0, 0, 0
     #제초제 위치 선정
