@@ -39,7 +39,7 @@ for _ in range(m):
                 if cnt > 0:
                     for (x, y) in xy:
                         narr[x][y] += arr[i][j] // cnt
-    arr = narr
+    arr = [x[:] for x in narr]
 
     max, max_i, max_j = 0, 0, 0
     #제초제 위치 선정
