@@ -41,7 +41,7 @@ for k in range(4):
                     if (ni, nj) in groups[j]:
                         ans += point
 
-    narr = arr
+    narr = [x[:] for x in arr]
     for i in range(n):
         narr[m][i] = arr[i][m]
         narr[i][m] = arr[m][n-1-i]
