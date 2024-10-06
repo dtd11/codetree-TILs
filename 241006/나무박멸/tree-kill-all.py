@@ -8,14 +8,14 @@ ans = 0
 for i in range(n):
     for j in range(n):
         if arr[i][j] == -1:
-            arr[i][j] = -10001 #벽이면 -10001로 초기화
+            arr[i][j] = -10000 #벽이면 -10000로 초기화
 
 
 for _ in range(m):
     #제초제 남은 년수 1년 줄이기
     for i in range(n):
         for j in range(n):
-            if arr[i][j] < 0:
+            if arr[i][j] < 0 and not arr[i][j] == -10000:
                 arr[i][j] += 1
     # 나무 성장
     for i in range(n):
@@ -52,6 +52,8 @@ for _ in range(m):
                         ni, nj = i + mul * di, j + mul * dj
                         if 0<=ni<n and 0<=nj<n and arr[ni][nj] > 0:
                             sum += arr[ni][nj]
+                        else:
+                            break
                 if sum > max:
                     max, max_i, max_j = sum, i, j
     #제초
@@ -61,6 +63,8 @@ for _ in range(m):
             ni, nj = max_i + mul * di, max_j + mul * dj
             if 0 <= ni < n and 0 <= nj < n and arr[ni][nj] > 0:
                 arr[ni][nj] = -(c+1)
+            else:
+                break
     ans += max
 
 print(ans)
