@@ -4,6 +4,7 @@ from collections import deque
 n, m, k, c = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(n)]
 ans = 0
+c += 1
 
 for i in range(n):
     for j in range(n):
@@ -58,19 +59,21 @@ for _ in range(m):
                     max, max_i, max_j = sum, i, j
     #제초
     narr = [x[:] for x in arr]
-    narr[max_i][max_j] = -(c+1)
+    narr[max_i][max_j] = -c
     for di,dj in ((-1,-1), (-1,1), (1,-1), (1,1)):
         for mul in range(1, k+1):
             ni, nj = max_i + mul * di, max_j + mul * dj
             if 0 <= ni < n and 0 <= nj < n:
-                if arr[ni][nj] < 0:
-                    if -(c+1) < arr[ni][nj]:
-                        narr[ni][nj] = -(c+1)
+                if arr[ni][nj] <= 0:
+                    if -c < arr[ni][nj]:
+                        narr[ni][nj] = -c
                         break
                     else:
                         break
                 else:
-                    narr[ni][nj] = -(c + 1)
+                    narr[ni][nj] = -c
+            else:
+                break
     arr = [x[:] for x in narr]
     ans += max
 
