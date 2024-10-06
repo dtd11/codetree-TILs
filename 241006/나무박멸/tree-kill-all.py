@@ -57,14 +57,21 @@ for _ in range(m):
                 if sum > max:
                     max, max_i, max_j = sum, i, j
     #제초
-    arr[max_i][max_j] = -(c+1)
+    narr = [x[:] for x in arr]
+    narr[max_i][max_j] = -(c+1)
     for di,dj in ((-1,-1), (-1,1), (1,-1), (1,1)):
         for mul in range(1, k+1):
             ni, nj = max_i + mul * di, max_j + mul * dj
-            if 0 <= ni < n and 0 <= nj < n and (arr[ni][nj] > 0 or arr[ni][nj] >= -(c+1)):
-                arr[ni][nj] = -(c+1)
-            else:
-                break
+            if 0 <= ni < n and 0 <= nj < n:
+                if arr[ni][nj] < 0:
+                    if -(c+1) < arr[ni][nj]:
+                        narr[ni][nj] = -(c+1)
+                        break
+                    else:
+                        break
+                else:
+                    narr[ni][nj] = -(c + 1)
+    arr = [x[:] for x in narr]
     ans += max
 
 print(ans)
