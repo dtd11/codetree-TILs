@@ -16,8 +16,8 @@ def bfs(x,y):
         cx, cy = q.popleft()
         for nx,ny in ((cx-1,cy), (cx,cy+1),(cx+1,cy),(cx,cy-1)):
             if 0<=nx<n and 0<=ny<n and not visited[nx][ny] and arr[cx][cy] == arr[nx][ny]:
-                q.add((nx,ny))
-                groups[-1].addd((nx,ny))
+                q.append((nx,ny))
+                groups[-1].add((nx,ny))
                 visited[nx][ny] = True
 
 
