@@ -10,13 +10,13 @@ def bfs(x,y):
     q = deque()
 
     q.append((x,y))
-    groups[-1].append((x,y))
+    groups[-1].add((x,y))
     visited[x][y] = True
     while q:
         cx, cy = q.popleft()
         for nx,ny in ((cx-1,cy), (cx,cy+1),(cx+1,cy),(cx,cy-1)):
             if 0<=nx<n and 0<=ny<n and not visited[nx][ny] and arr[cx][cy] == arr[nx][ny]:
-                q.append((nx,ny))
+                q.add((nx,ny))
                 groups[-1].append((nx,ny))
                 visited[nx][ny] = True
 
@@ -29,7 +29,7 @@ for _ in range(4):
     for i in range(n):
         for j in range(n):
             if not visited[i][j]:
-                groups.append(list())
+                groups.append(set())
                 nums.append(arr[i][j])
                 bfs(i,j)
     cnt = len(nums)
