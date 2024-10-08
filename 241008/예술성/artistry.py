@@ -52,7 +52,5 @@ for _ in range(4):
                 narr[si+i][sj+j] = arr[si+m-1-j][sj+i]
     arr = [x[:] for x in narr]
 
-    print(groups)
-    print(nums)
 
 print(ans)
