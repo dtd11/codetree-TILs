@@ -60,14 +60,18 @@ for _ in range(m):
     for ni,nj in ((-1,-1),(-1,1),(1,1),(1,-1)):
         for k in range(1, K+1):
             nx,ny = mi+k*ni, mj+k*nj
-            if 0 <= nx < n and 0 <= ny < n and 0 < arr[nx][ny]:
-                narr[nx][ny] = -(c+1)
-            elif 0 <= nx < n and 0 <= ny < n and arr[nx][ny] <= 0:
-                if arr[nx][ny] == M:
-                    break
-                else:
+            if 0 <= nx < n and 0 <= ny < n:
+                if 0 < arr[nx][ny]:
                     narr[nx][ny] = -(c+1)
-                    break
+                else:
+                    if -(c+1) < arr[nx][ny]:
+                        narr[nx][ny] = -(c+1)
+                        break
+                    else:
+                        break
+            else:
+                break
+
     arr = [x[:] for x in narr]
     ans += maxtree
 
